@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -15,6 +16,20 @@ import { ConfirmPickup } from './confirm-pickup/confirm-pickup';
 import { BuyerQR } from './buyer-qr/buyer-qr';
 import { ParcelQR } from './parcel-qr/parcel-qr';
 import { Home } from './home/home';
+
+const routes: Routes = [
+  { path: '', redirectTo: 'index', pathMatch: 'prefix' },
+  { path: 'index', component: Home },
+  { path: 'buyerqr', component: BuyerQR },
+  { path: 'collectorlisting', component: CollectorListing },
+  { path: 'collectorparcel', component: CollectorParcel },
+  { path: 'confirmcollector', component: ConfirmCollector },
+  { path: 'deposit', component: Deposit },
+  { path: 'parcelenquiry', component: ParcelEnquiry },
+  { path: 'parcelqr', component: ParcelQR },
+  { path: 'requestcollector', component: RequestCollector },
+  { path: 'searchcollector', component: SearchCollector },
+];
 
 @NgModule({
   declarations: [
@@ -33,6 +48,10 @@ import { Home } from './home/home';
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot(
+      routes,
+      { enableTracing: true } // <-- debugging purposes only
+    ),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
