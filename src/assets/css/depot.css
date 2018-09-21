@@ -1,0 +1,10 @@
+.std-card{
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.vcenter{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
